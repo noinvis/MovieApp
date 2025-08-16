@@ -1,10 +1,10 @@
 import { memo } from 'react';
-import img from '../../../public/logo.svg'
+import img from '../../../src/shared/assets/logo.svg'
 import { NavLink } from 'react-router-dom';
-import banner from '../../../public/tv-2-fill.png'
-import season from '../../../public/tablet-line.png'
-import ticket from '../../../public/coupon-3-line.png'
-import find from '../../../public/search-line.png'
+import banner from '../../../src/shared/assets/tv-2-fill.png'
+import season from '../../../src/shared/assets/tablet-line.png'
+import ticket from '../../../src/shared/assets/coupon-3-line.png'
+import find from '../../../src/shared/assets/search-line.png'
 
 const Header = () => {
   return (

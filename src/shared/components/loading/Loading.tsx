@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import logo from '../../../../public/LOGOTYPE.svg'
+import logo from '../../../../src/shared/assets/LOGOTYPE.svg'
 
 const Loading = () => {
   return (
