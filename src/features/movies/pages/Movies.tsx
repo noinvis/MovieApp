@@ -7,7 +7,7 @@ const Movies = () => {
   const {data} = getMovies()
   return (
     <div className="Movies">
-      <MovieView data={data?.results}/>
+      <MovieView data={data?.results} title='Movies'/>
     </div>
     
   );

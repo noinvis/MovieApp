@@ -8,11 +8,10 @@ const Home = () => {
   const {data} = getMovies()
   console.log(data);
   
-  
   return (
     <div className="Home">
       <Carousel/>
-      <MovieView data={data?.results}/>
+      <MovieView data={data?.results} title={"Movies"}/>
     </div>
   );
 };

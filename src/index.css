@@ -12,7 +12,8 @@ button:hover{
     cursor: pointer;
 }
 .link.active{
-    color: #C61F1F;
+    border-bottom: 1px solid white;
+    
 }
 li:hover{
     cursor: pointer;
@@ -20,9 +21,6 @@ li:hover{
 *{
     user-select: none;
     font-family: sans-serif;
-}
-button{
-    background: #C61F1F;
 }
 .loader {
   margin: 0 auto;

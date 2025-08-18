@@ -13,7 +13,7 @@ const Notfound = () => {
         Please go home and try again
       </p>
       <button
-        className="py-[10px] px-[30px] text-white rounded-[15px] mt-[1rem] font-medium"
+        className="py-[10px] px-[30px] text-white rounded-[15px] mt-[1rem] font-medium bg-[#C61F1F]"
         onClick={() => navigate("/")}
       >
         Home

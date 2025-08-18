@@ -1,8 +1,15 @@
-import { memo, useLayoutEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { memo, useLayoutEffect, type FC } from "react";
+import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
 import { useMovie } from "../service/useMovie";
+import arrow from "../../../shared/assets/arrow-left-s-line.png";
+import { IMAGE_URL } from "../../../shared/const";
 
-const MovieDetail = () => {
+interface Props {
+  title: string;
+  title2: string;
+}
+
+const MovieDetail: FC<Props> = ({ title, title2 }) => {
   const { id } = useParams();
   const { movieId } = useMovie();
   const { data, isLoading, isError } = movieId(Number(id));
@@ -24,28 +31,107 @@ const MovieDetail = () => {
 
   return (
     <div className="bg-black">
+      <div className="relative">
+        <img
+          loading="lazy"
+          src={`${IMAGE_URL}${data?.backdrop_path}`}
+          className="w-full"
+          alt=""
+        />
+        <button
+          className="absolute top-[10px] left-[10px] rounded-[12px] bg-black p-[10px] z-10 flex items-center max-[570px]:p-[7px]"
+          onClick={() => navigate(-1)}
+        >
+          <img
+            src={arrow}
+            className="size-[40px] max-[570px]:size-[20px] max-[400px]:size-[1rem]"
+            alt=""
+          />
+          <p className="text-white text-[18px] font-semibold pr-[10px] max-[570px]:text-[14px] max-[400px]:text-[12px]">
+            Previous
+          </p>
+        </button>
+        <div className="absolute inset-0 bg-black/30 flex items-center justify-center flex-col">
+          <h1 className="text-[50px] max-[830px]:text-[33px] max-[520px]:text-[20px] font-bold text-center text-white max-[400px]:text-[1rem]">
+            {data?.title}
+          </h1>
+          <p className="text-sm font-semibold text-center mb-4 text-white">
+            {data.release_date.split("-")[0]} •{" "}
+            {data.original_language.toUpperCase()} •{" "}
+            {data.vote_average.toFixed(1)}
+          </p>
+        </div>
+        <div className="absolute bottom-0 left-0 w-full h-[400px] max-[700px]:h-[100px] bg-gradient-to-t from-black to-transparent" />
+      </div>
+
       <div className="container text-white">
-        <div className="flex py-[60px] items-center justify-center max-[950px]:flex-col">
-          <div className="w-[50%] flex justify-center max-[950px]:w-full">
+        <div className="flex py-[60px] justify-between max-[800px]:flex-col">
+          <div className="w-[30%] flex justify-center max-[800px]:w-full max-[1000px]:w-[45%]">
             <img
-              src={`https://image.tmdb.org/t/p/original${data?.poster_path}`}
-              className="w-[400px] h-[500px] rounded-[12px] object-cover"
+              loading="lazy"
+              src={`${IMAGE_URL}${data?.poster_path}`}
+              className="rounded-[12px] object-cover"
             />
           </div>
-          <div className="w-[50%] flex justify-center flex-col max-[950px]:w-full">
-            <p className="text-[40px] font-semibold text-center max-[400px]:text-[30px]">{data?.title}</p>
-            <p className="font-medium text-center">{data?.overview}</p>
-            <p className="text-[24px] font-semibold py-[10px] text-center">
-                {data?.status}
-              </p>
-            <div className="flex justify-between py-[10px] w-full max-[950px]:justify-around">
-              <p className="text-[18px] font-semibold">{data?.release_date}</p>
-              <p className="text-[18px] font-semibold">{data?.vote_average.toFixed(1)} rating</p>
-              <p className="text-[18px] font-semibold">{data?.popularity.toFixed(1)}k views</p>
+          <div className="w-[60%] max-[800px]:w-full max-[1000px]:w-[50%]">
+            <p className="text-[40px] font-semibold max-[400px]:text-[30px] max-[520px]:text-[28px]">
+              {data?.title}
+            </p>
+            <p className="text-[20px] text-gray-400 font-medium mb-[5px]">
+              {data.tagline}
+            </p>
+            <p className="font-medium text-gray-300 py-[10px]">
+              {data?.overview}
+            </p>
+            <div className="flex justify-between mt-[20px] max-[1000px]:flex-col">
+              <div className="flex flex-col gap-[5px]">
+                <p className="text-[18px]">
+                  <span className="font-semibold">Original title: </span>
+                  {data?.original_title}
+                </p>
+                <p className="text-[18px]">
+                  <span className="font-semibold">Release date: </span>
+                  {data?.release_date}
+                </p>
+                <p className="text-[18px]">
+                  <span className="font-semibold">Rating: </span>
+                  {data?.vote_average.toFixed(1)}
+                </p>
+                <p className="text-[18px]">
+                  <span className="font-semibold">Languages: </span>
+                  {data.spoken_languages
+                    .map((language: any) => language.english_name)
+                    .join(", ")}
+                </p>
+                <p className="text-[18px] flex flex-col">
+                  <span className="font-semibold w-full">Genres: </span>
+                  {data.genres.map((item: any) => item.name).join(", ")}
+                </p>
+              </div>
+              <div className="flex flex-col gap-[5px]">
+                <p className="text-[18px]">
+                  <span className="font-semibold">Vote: </span>
+                  {data?.vote_count}
+                </p>
+                <p className="text-[18px]">
+                  <span className="font-semibold">Views: </span>
+                  {data?.popularity.toFixed(1)}k
+                </p>
+                <p className="text-[18px]">
+                  <span className="font-semibold">Budget: </span>${data?.budget}
+                </p>
+                <p className="text-[18px]">
+                  <span className="font-semibold">Runtime:</span>{" "}
+                  {data?.runtime} min
+                </p>
+                <p className="text-[18px]">
+                  <span className="font-semibold">Status:</span> {data?.status}
+                </p>
+              </div>
             </div>
             <div className="flex justify-center mt-[20px]">
               <button
-                className="text-white rounded-[12px] py-[8px] px-[45px]"
+                className="text-white rounded-[12px] py-[10px] px-[45px] bg-[#C61F1F]"
                 onClick={() => navigate("/")}
               >
                 Go Home
@@ -53,11 +139,27 @@ const MovieDetail = () => {
             </div>
           </div>
         </div>
-        <div className="pb-[30px]">
-          <img
-            src={`https://image.tmdb.org/t/p/original${data?.backdrop_path}`}
-            className="w-full h-[600px] rounded-[12px] object-cover"
-          />
+        <div className="flex w-full">
+          <NavLink
+            end={true}
+            to={""}
+            className={
+              "text-[20px] font-semibold link w-full text-center pb-[1rem]"
+            }
+          >
+            {title}
+          </NavLink>
+          <NavLink
+            to={"similar"}
+            className={
+              "text-[20px] font-semibold link w-full text-center pb-[1rem]"
+            }
+          >
+            {title2}
+          </NavLink>
+        </div>
+        <div>
+          <Outlet />
         </div>
       </div>
     </div>
