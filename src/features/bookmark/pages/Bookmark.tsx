@@ -2,6 +2,8 @@ import { memo, useLayoutEffect } from "react";
 import { useBookmark } from "../../../shared/zustand/useBookmark";
 import MovieView from "../../movies/components/movie-view/MovieView";
 import { useNavigate } from "react-router-dom";
+import { GoBookmarkSlash } from "react-icons/go";
+
 
 const Bookmark = () => {
   const { bookmark } = useBookmark();
@@ -15,6 +17,7 @@ const Bookmark = () => {
     return (
       <div className="bg-black">
         <div className="container h-[70vh] flex justify-center items-center flex-col gap-[10px]">
+          <GoBookmarkSlash className="text-[80px] text-white"/>
           <p className="text-[50px] text-white text-center font-medium max-[500px]:text-[30px]">
             Bookmark is empty!
           </p>

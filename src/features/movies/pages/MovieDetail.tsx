@@ -9,6 +9,10 @@ interface Props {
   title2: string;
 }
 
+interface Image {
+  file_path: string
+}
+
 const MovieDetail: FC<Props> = ({ title, title2 }) => {
   const { id } = useParams();
   const { movieId } = useMovie();
@@ -136,8 +140,8 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
         <p className="text-[24px] font-semibold mb-[10px]">Moments</p>
         <div className="flex overflow-auto mb-[30px] scrollbar-hide">
           {
-            images?.backdrops?.map((item: any, inx: number) => (
-              <img key={inx} src={`${IMAGE_URL}${item.file_path}`} width={250} className="max-[450px]:w-[150px]" alt="" />
+            images?.backdrops?.map((item: Image, inx: number) => (
+              <img loading="lazy" key={inx} src={`${IMAGE_URL}${item.file_path}`} width={250} className="max-[450px]:w-[150px]" alt="" />
             ))
           }
         </div>
