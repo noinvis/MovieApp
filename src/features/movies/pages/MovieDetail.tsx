@@ -14,7 +14,9 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
   const { movieId } = useMovie();
   const { data, isLoading, isError } = movieId(Number(id));
   const navigate = useNavigate();
-  console.log(data);
+  const {getMovieItems} = useMovie()
+  const {data: images} = getMovieItems(Number(id), "images")
+  console.log(images);
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -130,6 +132,14 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
               </div>
             </div>
           </div>
+        </div>
+        <p className="text-[24px] font-semibold mb-[10px]">Moments</p>
+        <div className="flex overflow-auto mb-[30px] scrollbar-hide">
+          {
+            images?.backdrops?.map((item: any, inx: number) => (
+              <img key={inx} src={`${IMAGE_URL}${item.file_path}`} width={250} className="max-[450px]:w-[150px]" alt="" />
+            ))
+          }
         </div>
         <div className="flex w-full">
           <NavLink

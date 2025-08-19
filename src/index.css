@@ -22,6 +22,9 @@ li:hover{
     user-select: none;
     font-family: sans-serif;
 }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
 .loader {
   margin: 0 auto;
   width: 100px;
