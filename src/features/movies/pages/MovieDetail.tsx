@@ -129,14 +129,6 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
                 </p>
               </div>
             </div>
-            <div className="flex justify-center mt-[20px]">
-              <button
-                className="text-white rounded-[12px] py-[10px] px-[45px] bg-[#C61F1F]"
-                onClick={() => navigate("/")}
-              >
-                Go Home
-              </button>
-            </div>
           </div>
         </div>
         <div className="flex w-full">
