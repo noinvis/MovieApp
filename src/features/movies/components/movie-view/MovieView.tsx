@@ -71,10 +71,10 @@ const MovieView: FC<Props> = ({ data, title }) => {
                   onClick={() => navigate(`/movie/${movie.id}`)}
                   className="object-cover"
                 />
-                <div className="absolute duration-300 top-[8px] right-[-50px] group-hover:right-[12px] max-[700px]:right-[12px] max-[700px]:flex max-[700px]:gap-1.5">
+                <div className="absolute duration-300 top-[8px] right-[-50px] group-hover:right-[12px] max-[700px]:right-[12px] max-[700px]:flex max-[700px]:gap-1.5 max-[410px]:top-[4px] max-[410px]:right-[4px]">
                   <button
                     onClick={() => toggleBookmark(movie)}
-                    className="block p-[8px] rounded-[50%] bg-white mt-[5px] max-[700px]:mt-0"
+                    className="block p-[8px] rounded-[50%] bg-white mt-[5px] max-[700px]:mt-0 max-[410px]:p-[6px]"
                   >
                     {bookmark.some((item) => item.id === movie.id) ? (
                       <IoBookmark className="text-[24px] max-[700px]:text-[18px] text-[#C61F1F]" />
@@ -91,7 +91,7 @@ const MovieView: FC<Props> = ({ data, title }) => {
                 >
                   {movie.title}
                 </h3>
-                <div className="flex justify-between items-center mt-[10px] max-[400px]:flex-col gap-[10px] max-[400px]:items-start">
+                <div className="flex justify-between items-center mt-[10px] max-[420px]:flex-col gap-[10px] max-[420px]:items-start">
                   <p className="text-yellow-500 font-semibold flex items-center gap-[10px]">
                     <Star className="size-[24px]" />{" "}
                     {movie.vote_average.toFixed(1)}

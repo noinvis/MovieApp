@@ -15,10 +15,10 @@ const Bookmark = () => {
     return (
       <div className="bg-black">
         <div className="container h-[70vh] flex justify-center items-center flex-col gap-[10px]">
-          <p className="text-[50px] text-white text-center font-medium">
+          <p className="text-[50px] text-white text-center font-medium max-[500px]:text-[30px]">
             Bookmark is empty!
           </p>
-          <p className="text-[24px] text-white text-center font-medium">
+          <p className="text-[24px] text-white text-center font-medium max-[500px]:text-[18px]">
             Please choose your liked movie
           </p>
           <button
