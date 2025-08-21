@@ -27,7 +27,7 @@ const MovieVideo = () => {
     );
 
   const videoData =
-    video.results.find(
+    video?.results?.find(
       (item: VideoData) => item.type === "Trailer" && item.site === "YouTube"
     ) || null;
 
