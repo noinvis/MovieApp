@@ -15,11 +15,13 @@ const Movies = () => {
   const { getGenres } = useGenre();
   const [params, setParams] = useSearchParams();
 
+  
   const page = params.get("page") || "1";
   const with_genres = params.get("genre") || "";
   const sort_by = params.get("sort_by") || "popularity.desc";
   const { data } = getMovies({ page, with_genres, sort_by });
-
+  
+  
   const { data: genreData } = getGenres();
   const options = genreData?.genres?.map(({ id, name }: GenreData) => ({
     value: String(id),

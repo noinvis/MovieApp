@@ -4,6 +4,7 @@ import { useMovie } from "../service/useMovie";
 import arrow from "../../../shared/assets/arrow-left-s-line.png";
 import { IMAGE_URL } from "../../../shared/const";
 import Similar from "./similar/Similar";
+import MovieVideo from "../components/movie-video/MovieVideo";
 
 interface Props {
   title: string;
@@ -145,6 +146,9 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
               <img loading="lazy" key={inx} src={`${IMAGE_URL}${item.file_path}`} width={250} className="max-[450px]:w-[150px]" alt="" />
             ))
           }
+        </div>
+        <div>
+          <MovieVideo/>
         </div>
         <div className="flex w-full">
           <NavLink
