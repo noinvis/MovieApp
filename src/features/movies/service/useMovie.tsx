@@ -13,7 +13,7 @@ interface IParams {
 export const useMovie = () => {
     const getMovies = (params?: IParams) => useQuery({
         queryKey: ["movie-key", params],
-        queryFn: ()=> api.get("/discover/movie", {params: {...params, without_genres: "10749, 99, 27" }}).then(res => res.data)
+        queryFn: ()=> api.get("/discover/movie", {params: {...params, without_genres: "10749, 99, 27, 18" }}).then(res => res.data)
     })
 
     const movieId = (id?: number) => useQuery({
