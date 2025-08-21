@@ -15,13 +15,11 @@ const Movies = () => {
   const { getGenres } = useGenre();
   const [params, setParams] = useSearchParams();
 
-  
   const page = params.get("page") || "1";
   const with_genres = params.get("genre") || "";
   const sort_by = params.get("sort_by") || "popularity.desc";
-  const { data } = getMovies({ page, with_genres, sort_by });
-  
-  
+  const { data, isLoading } = getMovies({ page, with_genres, sort_by });
+
   const { data: genreData } = getGenres();
   const options = genreData?.genres?.map(({ id, name }: GenreData) => ({
     value: String(id),
@@ -111,7 +109,23 @@ const Movies = () => {
           />
         </div>
       </div>
-      <MovieView data={data?.results} />
+      <div className="min-h-[500px] max-[410px]:min-h-[200px]">
+        {isLoading && (
+          <div className="h-[80vh] flex justify-center items-center bg-black">
+            <div className="loader"></div>
+          </div>
+        )}
+        {data?.results?.length ? (
+          <MovieView data={data.results} />
+        ) : (
+          !isLoading && (
+            <div className="flex justify-center items-center min-h-[500px] max-[410px]:min-h-[200px]">
+              <p className="text-[#999] text-[30px] text-center max-[410px]:text-[20px]">No movie at this genre</p>
+            </div>
+          )
+        )}
+      </div>
+
       <div className="flex justify-center bg-black py-[30px]">
         <Pagination
           current={Number(page)}

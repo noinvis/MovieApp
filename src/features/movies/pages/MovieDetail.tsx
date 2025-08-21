@@ -5,6 +5,7 @@ import arrow from "../../../shared/assets/arrow-left-s-line.png";
 import { IMAGE_URL } from "../../../shared/const";
 import Similar from "./similar/Similar";
 import MovieVideo from "../components/movie-video/MovieVideo";
+import detailImage from "../../../shared/assets/card.png";
 
 interface Props {
   title: string;
@@ -12,7 +13,7 @@ interface Props {
 }
 
 interface Image {
-  file_path: string
+  file_path: string;
 }
 
 const MovieDetail: FC<Props> = ({ title, title2 }) => {
@@ -20,8 +21,8 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
   const { movieId } = useMovie();
   const { data, isLoading, isError } = movieId(Number(id));
   const navigate = useNavigate();
-  const {getMovieItems} = useMovie()
-  const {data: images} = getMovieItems(Number(id), "images")
+  const { getMovieItems } = useMovie();
+  const { data: images } = getMovieItems(Number(id), "images");
   console.log(images);
 
   useLayoutEffect(() => {
@@ -40,12 +41,16 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
   return (
     <div className="bg-black">
       <div className="relative">
-        <img
-          loading="lazy"
-          src={`${IMAGE_URL}${data?.backdrop_path}`}
-          className="w-full h-[700px] object-cover max-[900px]:h-[500px] max-[670px]:h-[300px] max-[520px]:h-[230px] max-[410px]:h-[190px]"
-          alt=""
-        />
+        {data?.backdrop_path ? (
+          <img
+            loading="lazy"
+            src={`${IMAGE_URL}${data.backdrop_path}`}
+            className="w-full h-[700px] object-cover max-[900px]:h-[500px] max-[670px]:h-[300px] max-[520px]:h-[230px] max-[410px]:h-[190px]"
+            alt=""
+          />
+        ) : (
+          <div className="w-full h-[700px] bg-[#555] max-[900px]:h-[500px] max-[670px]:h-[300px] max-[520px]:h-[230px] max-[410px]:h-[190px]" />
+        )}
         <button
           className="absolute top-[10px] left-[10px] rounded-[12px] bg-black p-[10px] z-10 flex items-center max-[570px]:p-[7px]"
           onClick={() => navigate(-1)}
@@ -77,8 +82,13 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
           <div className="w-[30%] flex justify-center max-[800px]:w-full max-[1000px]:w-[45%]">
             <img
               loading="lazy"
-              src={`${IMAGE_URL}${data?.poster_path}`}
+              src={
+                data?.poster_path
+                  ? `${IMAGE_URL}${data.poster_path}`
+                  : detailImage
+              }
               className="rounded-[12px] object-cover max-[800px]:h-[700px] max-[550px]:h-[500px] max-[410px]:h-[450px]"
+              alt=""
             />
           </div>
           <div className="w-[60%] max-[800px]:w-full max-[1000px]:w-[50%]">
@@ -141,14 +151,25 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
         </div>
         <p className="text-[24px] font-semibold mb-[10px]">Moments</p>
         <div className="flex overflow-auto mb-[30px] scrollbar-hide">
-          {
-            images?.backdrops?.slice(0, 10).map((item: Image, inx: number) => (
-              <img loading="lazy" key={inx} src={`${IMAGE_URL}${item.file_path}`} width={250} className="max-[450px]:w-[150px]" alt="" />
-            ))
-          }
+          {images?.backdrops?.length ? (
+            <div className="flex overflow-auto mb-[30px] scrollbar-hide">
+              {images.backdrops.slice(0, 10).map((item: Image, inx: number) => (
+                <img
+                  loading="lazy"
+                  key={inx}
+                  src={`${IMAGE_URL}${item.file_path}`}
+                  width={250}
+                  className="max-[450px]:w-[150px]"
+                  alt=""
+                />
+              ))}
+            </div>
+          ) : (
+            <p className="text-[#999]">No Moments</p>
+          )}
         </div>
         <div>
-          <MovieVideo/>
+          <MovieVideo />
         </div>
         <div className="flex w-full">
           <NavLink
@@ -173,7 +194,7 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
           <Outlet />
         </div>
         <div>
-          <Similar/>
+          <Similar />
         </div>
       </div>
     </div>
