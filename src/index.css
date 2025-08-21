@@ -44,3 +44,9 @@ li:hover{
     transform: rotate(1turn);
   }
 }
+
+@media (max-width: 600px) {
+  .loader{
+    width: 50px;
+  }
+}
