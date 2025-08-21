@@ -48,6 +48,7 @@ const Movies = () => {
 
   const handleChangeSort = (value: string) => {
     params.set("sort_by", value);
+    params.set("page", "1");
     setParams(params);
   };
 
