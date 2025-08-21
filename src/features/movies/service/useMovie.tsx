@@ -1,18 +1,19 @@
-import { useMutation, useQuery } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query"
 import { api } from "../../../shared/api"
 
 interface IParams {
-    page?: number
+  page?: number | string
+  without_genres?: string,
+  with_genres?: string,
+  sort_by?: string,
+  release_date_gte?: string,
+  release_date_lte?: string
 }
 
 export const useMovie = () => {
     const getMovies = (params?: IParams) => useQuery({
         queryKey: ["movie-key", params],
         queryFn: ()=> api.get("/discover/movie", {params: {...params, without_genres: "10749, 99, 27" }}).then(res => res.data)
-    })
-
-    const createMovie = useMutation({
-        mutationFn: (data: any)=> api.post("/discover/movie", data)
     })
 
     const movieId = (id?: number) => useQuery({
@@ -26,5 +27,5 @@ export const useMovie = () => {
             queryFn: () => api.get(`/movie/${id}/${path}`).then((res) => res.data)
         })
 
-    return {getMovies, createMovie, movieId, getMovieItems}
+    return {getMovies, movieId, getMovieItems}
 }

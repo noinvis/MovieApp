@@ -8,7 +8,7 @@ const Movies = lazy(() => import("../features/movies/pages/Movies"));
 const MovieDetail = lazy(() => import("../features/movies/pages/MovieDetail"));
 const NotFound = lazy(() => import("../shared/components/not-found/Notfound"));
 const Actors = lazy(() => import("../features/movies/pages/actors/Actors"));
-const Similar = lazy(() => import("../features/movies/pages/similar/Similar"));
+const Producers = lazy(() => import("../features/movies/pages/producers/Producers"));
 
 const AppRoutes = () => {
   return useRoutes([
@@ -21,10 +21,10 @@ const AppRoutes = () => {
         { path: "movies", element: <Movies /> },
         {
           path: "movie/:id",
-          element: <MovieDetail title={"Actors"} title2={"Similar movies"}/>,
+          element: <MovieDetail title={"Actors"} title2={"Producers"}/>,
           children: [
             { index: true, element: <Actors/> },
-            { path: "similar", element: <Similar /> },
+            { path: "producers", element: <Producers /> },
           ],
         },
         { path: "*", element: <NotFound /> },

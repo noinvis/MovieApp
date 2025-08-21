@@ -3,6 +3,7 @@ import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
 import { useMovie } from "../service/useMovie";
 import arrow from "../../../shared/assets/arrow-left-s-line.png";
 import { IMAGE_URL } from "../../../shared/const";
+import Similar from "./similar/Similar";
 
 interface Props {
   title: string;
@@ -41,7 +42,7 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
         <img
           loading="lazy"
           src={`${IMAGE_URL}${data?.backdrop_path}`}
-          className="w-full"
+          className="w-full h-[700px] object-cover max-[900px]:h-[500px] max-[670px]:h-[300px] max-[520px]:h-[230px] max-[410px]:h-[190px]"
           alt=""
         />
         <button
@@ -76,7 +77,7 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
             <img
               loading="lazy"
               src={`${IMAGE_URL}${data?.poster_path}`}
-              className="rounded-[12px] object-cover"
+              className="rounded-[12px] object-cover max-[800px]:h-[700px] max-[550px]:h-[500px] max-[410px]:h-[450px]"
             />
           </div>
           <div className="w-[60%] max-[800px]:w-full max-[1000px]:w-[50%]">
@@ -140,7 +141,7 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
         <p className="text-[24px] font-semibold mb-[10px]">Moments</p>
         <div className="flex overflow-auto mb-[30px] scrollbar-hide">
           {
-            images?.backdrops?.map((item: Image, inx: number) => (
+            images?.backdrops?.slice(0, 10).map((item: Image, inx: number) => (
               <img loading="lazy" key={inx} src={`${IMAGE_URL}${item.file_path}`} width={250} className="max-[450px]:w-[150px]" alt="" />
             ))
           }
@@ -156,7 +157,7 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
             {title}
           </NavLink>
           <NavLink
-            to={"similar"}
+            to={"producers"}
             className={
               "text-[20px] font-semibold link w-full text-center pb-[1rem]"
             }
@@ -166,6 +167,9 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
         </div>
         <div>
           <Outlet />
+        </div>
+        <div>
+          <Similar/>
         </div>
       </div>
     </div>

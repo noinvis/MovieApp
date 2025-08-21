@@ -8,8 +8,11 @@ const Similar = () => {
   const {getMovieItems} = useMovie()
   const {data: similar} = getMovieItems(Number(id), "similar")
   return (
-    <div>
-      <MovieView data={similar?.results} title='Similar movies'/> 
+    <div className='bg-black'>
+      <p className="text-center text-white text-[40px] font-semibold">
+        Similar movies
+      </p>
+      <MovieView data={similar?.results.slice(0, 8)}/> 
     </div>
   );
 };

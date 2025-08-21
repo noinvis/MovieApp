@@ -4,7 +4,6 @@ import MovieView from "../../movies/components/movie-view/MovieView";
 import { useNavigate } from "react-router-dom";
 import { GoBookmarkSlash } from "react-icons/go";
 
-
 const Bookmark = () => {
   const { bookmark } = useBookmark();
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ const Bookmark = () => {
     return (
       <div className="bg-black">
         <div className="container h-[70vh] flex justify-center items-center flex-col gap-[10px]">
-          <GoBookmarkSlash className="text-[80px] text-white"/>
+          <GoBookmarkSlash className="text-[80px] text-white" />
           <p className="text-[50px] text-white text-center font-medium max-[500px]:text-[30px]">
             Bookmark is empty!
           </p>
@@ -36,7 +35,10 @@ const Bookmark = () => {
   }
 
   return (
-      <MovieView data={bookmark} title="Bookmark" />
+    <div className="bg-black">
+      <p className="text-center text-white text-[40px] font-semibold">Bookmark</p>
+      <MovieView data={bookmark} />
+    </div>
   );
 };
 

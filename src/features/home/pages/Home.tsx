@@ -13,9 +13,12 @@ const Home = () => {
     }, []);
   
   return (
-    <div className="Home">
+    <div className="bg-black">
       <Carousel/>
-      <MovieView data={data?.results} title={"Movies"}/>
+      <p className="text-center text-white text-[40px] font-semibold">
+        Movies
+      </p>
+      <MovieView data={data?.results}/>
     </div>
   );
 };

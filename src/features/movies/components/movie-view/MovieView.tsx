@@ -1,6 +1,6 @@
 import { Star } from "lucide-react";
 import { memo, useLayoutEffect, type FC } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useBookmark } from "../../../../shared/zustand/useBookmark";
 import { IoBookmarkOutline } from "react-icons/io5";
 import { IoBookmark } from "react-icons/io5";
@@ -18,10 +18,10 @@ interface Movie {
 
 interface Props {
   data: Movie[] | undefined;
-  title: string;
 }
 
-const MovieView: FC<Props> = ({ data, title }) => {
+const MovieView: FC<Props> = ({ data }) => {
+  const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   const { getMovies } = useMovie();
@@ -29,13 +29,10 @@ const MovieView: FC<Props> = ({ data, title }) => {
   const { isLoading } = getMovies();
 
   useLayoutEffect(() => {
-    if (
-      location.pathname.startsWith("/movie/") &&
-      !location.pathname.includes("/similar")
-    ) {
-      window.scrollTo(0, 0);
-    }
-  }, [location.pathname]);
+  if (location.pathname === `/movie/${id}`) {
+    window.scrollTo(0, 0);
+  }
+}, [id]);
 
   if (isLoading)
     return (
@@ -50,9 +47,6 @@ const MovieView: FC<Props> = ({ data, title }) => {
       : data;
   return (
     <main className="bg-black py-[30px]">
-      <p className="text-center text-white text-[40px] font-semibold mb-[20px]">
-        {title}
-      </p>
       <div className="container grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3">
         {movies?.map((movie: Movie) => {
           const card = movie.poster_path
@@ -94,10 +88,10 @@ const MovieView: FC<Props> = ({ data, title }) => {
                 <div className="flex justify-between items-center mt-[10px] max-[420px]:flex-col gap-[10px] max-[420px]:items-start">
                   <p className="text-yellow-500 font-semibold flex items-center gap-[10px]">
                     <Star className="size-[24px]" />{" "}
-                    {movie.vote_average.toFixed(1)}
+                    {movie.vote_average ? movie.vote_average.toFixed(1) : "0"}
                   </p>
                   <p className="text-white font-semibold">
-                    {movie.popularity.toFixed(1)}k views
+                    {movie.popularity ? movie.popularity.toFixed(1) : "0"}k views
                   </p>
                 </div>
               </div>
