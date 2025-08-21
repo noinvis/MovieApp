@@ -29,7 +29,7 @@ const MovieView: FC<Props> = ({ data }) => {
   const { isLoading } = getMovies();
 
   useLayoutEffect(() => {
-  if (location.pathname === `/movie/${id}`) {
+  if (location.pathname === `/movie/${id}` || '/movies') {
     window.scrollTo(0, 0);
   }
 }, [id]);
@@ -54,7 +54,7 @@ const MovieView: FC<Props> = ({ data }) => {
             : `${image}`;
           return (
             <div key={movie.id}>
-              <div className="cursor-pointer relative overflow-hidden">
+              <div className="cursor-pointer relative group overflow-hidden">
                 <img
                   src={card}
                   loading="lazy"
