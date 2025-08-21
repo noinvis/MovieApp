@@ -54,16 +54,13 @@ const MovieView: FC<Props> = ({ data }) => {
             : `${image}`;
           return (
             <div key={movie.id}>
-              <div className="cursor-pointer relative group overflow-hidden">
+              <div className="cursor-pointer relative overflow-hidden">
                 <img
                   src={card}
                   loading="lazy"
                   alt=""
-                  style={{
-                    height: movie.poster_path ? "auto" : "470px",
-                  }}
+                  className="w-full h-[500px] object-cover max-[1030px]:h-[400px] max-[550px]:h-[300px] max-[410px]:h-[250px]"
                   onClick={() => navigate(`/movie/${movie.id}`)}
-                  className="object-cover"
                 />
                 <div className="absolute duration-300 top-[8px] right-[-50px] group-hover:right-[12px] max-[700px]:right-[12px] max-[700px]:flex max-[700px]:gap-1.5 max-[410px]:top-[4px] max-[410px]:right-[4px]">
                   <button
