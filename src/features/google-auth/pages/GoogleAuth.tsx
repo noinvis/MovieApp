@@ -43,18 +43,20 @@ const GoogleAuth = () => {
                 Подробнее об использовании гостевого режима
               </span>
             </p>
-            <GoogleLogin
-              onSuccess={(credentialResponse) => {
-                localStorage.setItem(
-                  "google-token",
-                  credentialResponse.credential || ""
-                );
-                navigate("/")
-              }}
-              onError={() => {
-                console.log("Login Failed");
-              }}
-            />
+            <div className="w-full">
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  localStorage.setItem(
+                    "google-token",
+                    credentialResponse.credential || ""
+                  );
+                  navigate("/")
+                }}
+                onError={() => {
+                  console.log("Login Failed");
+                }}
+              />
+            </div>
             <button onClick={() => navigate("/")} className="bg-[#C61F1F] py-[7px] rounded-[5px]">Home</button>
           </form>
         ) : (
