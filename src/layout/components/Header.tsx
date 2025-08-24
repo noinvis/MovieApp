@@ -50,13 +50,13 @@ const Header = () => {
           </li>
           <li>
             <NavLink
-              to={"/find"}
+              to={"/search"}
               className={
                 "flex flex-col items-center py-[3px] px-[10px] hover:bg-[#555] duration-300 rounded-[12px] w-[80px]"
               }
             >
               <img src={find} />
-              <p className="text-[#A1A1A1] text-[14px] font-medium">Find</p>
+              <p className="text-[#A1A1A1] text-[14px] font-medium">Search</p>
             </NavLink>
           </li>
         </ul>
@@ -105,7 +105,7 @@ const Header = () => {
                   : ""
               } text-[20px] text-[#A1A1A1]`
             }
-            to={"/cart"}
+            to={"/search"}
           >
             <Search />
           </NavLink>

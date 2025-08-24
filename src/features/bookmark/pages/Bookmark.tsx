@@ -36,7 +36,7 @@ const Bookmark = () => {
 
   return (
     <div className="bg-black">
-      <p className="text-center text-white text-[40px] font-semibold">Bookmark</p>
+      <p className="text-center text-white text-[40px] font-semibold max-[700px]:text-[24px]">Bookmark</p>
       <MovieView data={bookmark} />
     </div>
   );

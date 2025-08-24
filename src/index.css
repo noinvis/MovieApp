@@ -39,6 +39,36 @@ li:hover{
   mask-composite: subtract;
   animation: l3 1s infinite linear;
 }
+.ant-input {
+  background-color: #1a1a1a;
+  color: #999;
+  border: 1px solid #444;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  width: 550px;
+}
+
+.ant-input::placeholder {
+  color: #999;
+}
+
+.ant-input:hover {
+  border-color: #C61F1F;
+  background-color: #1a1a1a !important;
+}
+
+.ant-input:focus {
+  border-color: #C61F1F;
+  background-color: #1a1a1a;
+}
+
+.ant-input[disabled] {
+  background-color: #0d0d0d;
+  color: rgba(255, 255, 255, 0.3);
+  border-color: #1a1a1a;
+  margin-left: 100px;
+}
+
 @keyframes l3 {
   to {
     transform: rotate(1turn);

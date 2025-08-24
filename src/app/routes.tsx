@@ -4,6 +4,7 @@ import { useRoutes } from "react-router-dom";
 const MainLayout = lazy(() => import("../layout/MainLayout"));
 const Home = lazy(() => import("../features/home/pages/Home"));
 const Bookmark = lazy(() => import("../features/bookmark/pages/Bookmark"));
+const Search = lazy(() => import("../features/find/pages/Search"));
 const Movies = lazy(() => import("../features/movies/pages/Movies"));
 const MovieDetail = lazy(() => import("../features/movies/pages/MovieDetail"));
 const NotFound = lazy(() => import("../shared/components/not-found/Notfound"));
@@ -18,6 +19,7 @@ const AppRoutes = () => {
       children: [
         { index: true, element: <Home /> },
         { path: "bookmark", element: <Bookmark /> },
+        { path: "search", element: <Search /> },
         { path: "movies", element: <Movies /> },
         {
           path: "movie/:id",

@@ -54,7 +54,7 @@ const Movies = () => {
 
   return (
     <div className="bg-black">
-      <p className="text-center text-white text-[40px] font-semibold pt-[20px]">
+      <p className="text-center text-white text-[40px] font-semibold pt-[20px] max-[700px]:text-[24px]">
         Movies
       </p>
       <div className="container flex justify-between items-center pt-[30px]">
