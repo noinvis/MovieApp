@@ -154,7 +154,7 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
         <div className="flex overflow-auto mb-[30px] scrollbar-hide">
           {images?.backdrops?.length ? (
             <div className="flex overflow-auto mb-[30px] scrollbar-hide">
-              {images.backdrops.slice(0, 7).map((item: Image, inx: number) => (
+              {images.backdrops.slice(0, 6).map((item: Image, inx: number) => (
                 <Image
                   width='100%'
                   height="150px"
