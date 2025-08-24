@@ -36,7 +36,7 @@ const MovieView: FC<Props> = ({ data }) => {
 
   if (isLoading)
     return (
-      <div className="h-[80vh] flex justify-center items-center bg-black">
+      <div className="h-[80vh] flex justify-center items-center bg-black dark:bg-white">
         <div className="loader"></div>
       </div>
     );
@@ -46,14 +46,14 @@ const MovieView: FC<Props> = ({ data }) => {
       ? data?.slice(0, 8)
       : data;
   return (
-    <main className="bg-black py-[30px]">
+    <main className="py-[30px]">
       <div className="container grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3">
         {movies?.map((movie: Movie) => {
           const card = movie.poster_path
             ? `${IMAGE_URL}${movie.poster_path}`
             : `${image}`;
           return (
-            <div key={movie.id}>
+            <div key={movie.id} className="dark:bg-[#ece3e3] dark:shadow-md">
               <div className="cursor-pointer relative group overflow-hidden">
                 <img
                   src={card}
@@ -77,7 +77,7 @@ const MovieView: FC<Props> = ({ data }) => {
               </div>
               <div className="p-2">
                 <h3
-                  className="font-semibold line-clamp-1 text-white mt-[10px]"
+                  className="font-semibold line-clamp-1 text-white dark:text-black mt-[10px]"
                   title={movie.title}
                 >
                   {movie.title}
@@ -87,7 +87,7 @@ const MovieView: FC<Props> = ({ data }) => {
                     <Star className="size-[24px]" />{" "}
                     {movie.vote_average ? movie.vote_average.toFixed(1) : "0"}
                   </p>
-                  <p className="text-white font-semibold">
+                  <p className="text-white font-semibold dark:text-black">
                     {movie.popularity ? movie.popularity.toFixed(1) : "0"}k views
                   </p>
                 </div>

@@ -18,7 +18,7 @@ const Footer = () => {
   return (
     <footer>
       <div className='container'>
-        <div className='rounded-[12px] bg-[#111111] grid grid-cols-4 p-[30px] gap-[30px] max-[930px]:grid-cols-2 max-[520px]:grid-cols-1'>
+        <div className='rounded-[12px] bg-[#111111] dark:bg-[#ece3e3] grid grid-cols-4 p-[30px] gap-[30px] max-[930px]:grid-cols-2 max-[520px]:grid-cols-1'>
           <div>
             <img src={logo}/>
             <div className='flex flex-col gap-[8px] items-start mt-[50px]'>

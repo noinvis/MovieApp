@@ -25,7 +25,7 @@ const GoogleAuth = () => {
 
   return (
     <div className="h-screen w-full flex justify-center items-center flex-col">
-      <div className="bg-[#111111] w-[900px] rounded-[28px] p-[30px] py-[60px] flex max-[960px]:w-auto max-[960px]:flex-col">
+      <div className="bg-[#111111] dark:bg-white dark:shadow-lg w-[900px] rounded-[28px] p-[30px] py-[60px] flex max-[960px]:w-auto max-[960px]:flex-col">
         <div className="w-[50%] max-[960px]:w-full">
             <div className="flex items-start flex-col max-[960px]:flex-row max-[960px]:items-center max-[960px]:justify-center">
                 <img src={img} alt="" />
@@ -57,7 +57,7 @@ const GoogleAuth = () => {
                 }}
               />
             </div>
-            <button onClick={() => navigate("/")} className="bg-[#C61F1F] py-[7px] rounded-[5px]">Home</button>
+            <button onClick={() => navigate("/")} className="bg-[#C61F1F] py-[7px] rounded-[5px] dark:text-white">Home</button>
           </form>
         ) : (
           <div className="flex flex-col items-center gap-3 w-[50%]">

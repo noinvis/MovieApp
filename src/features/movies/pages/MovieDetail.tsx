@@ -34,13 +34,13 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
 
   if (isLoading)
     return (
-      <div className="h-[80vh] flex justify-center items-center bg-black">
+      <div className="h-[80vh] flex justify-center items-center">
         <div className="loader"></div>
       </div>
     );
 
   return (
-    <div className="bg-black">
+    <div className="">
       <div className="relative">
         {data?.backdrop_path ? (
           <img
@@ -53,7 +53,7 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
           <div className="w-full h-[700px] bg-[#555] max-[900px]:h-[500px] max-[670px]:h-[300px] max-[520px]:h-[230px] max-[410px]:h-[190px]" />
         )}
         <button
-          className="absolute top-[10px] left-[10px] rounded-[12px] bg-black p-[10px] z-10 flex items-center max-[570px]:p-[7px]"
+          className="absolute top-[10px] left-[10px] rounded-[12px] bg-black dark:bg-white  p-[10px] z-10 flex items-center max-[570px]:p-[7px]"
           onClick={() => navigate(-1)}
         >
           <img
@@ -61,11 +61,11 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
             className="size-[40px] max-[570px]:size-[20px] max-[400px]:size-[1rem]"
             alt=""
           />
-          <p className="text-white text-[18px] font-semibold pr-[10px] max-[570px]:text-[14px] max-[400px]:text-[12px]">
+          <p className="text-[18px] font-semibold pr-[10px] max-[570px]:text-[14px] max-[400px]:text-[12px]">
             Previous
           </p>
         </button>
-        <div className="absolute inset-0 bg-black/30 flex items-center justify-center flex-col">
+        <div className="absolute inset-0 bg-black/30 dark:bg-transparent flex items-center justify-center flex-col">
           <h1 className="text-[50px] max-[830px]:text-[33px] max-[520px]:text-[20px] font-bold text-center text-white max-[400px]:text-[1rem]">
             {data?.title}
           </h1>
@@ -75,10 +75,10 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
             {data.vote_average.toFixed(1)}
           </p>
         </div>
-        <div className="absolute bottom-0 left-0 w-full h-[400px] max-[700px]:h-[100px] bg-gradient-to-t from-black to-transparent" />
+        <div className="absolute bottom-0 left-0 w-full h-[400px] max-[700px]:h-[100px] bg-gradient-to-t from-black dark:h-0 to-transparent" />
       </div>
 
-      <div className="container text-white">
+      <div className="container">
         <div className="flex py-[60px] justify-between max-[800px]:flex-col">
           <div className="w-[30%] flex justify-center max-[800px]:w-full max-[1000px]:w-[45%]">
             <img
@@ -96,10 +96,10 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
             <p className="text-[40px] font-semibold max-[400px]:text-[30px] max-[520px]:text-[28px]">
               {data?.title}
             </p>
-            <p className="text-[20px] text-gray-400 font-medium mb-[5px]">
+            <p className="text-[20px] text-gray-400 dark:text-[#555] font-medium mb-[5px]">
               {data.tagline}
             </p>
-            <p className="font-medium text-gray-300 py-[10px]">
+            <p className="font-medium text-gray-300 dark:text-[#555] py-[10px]">
               {data?.overview}
             </p>
             <div className="flex justify-between mt-[20px] max-[1000px]:flex-col">
@@ -157,11 +157,9 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
               {images.backdrops.slice(0, 6).map((item: Image, inx: number) => (
                 <Image
                   width='100%'
-                  height="150px"
                   loading="lazy"
                   key={inx}
                   src={`${IMAGE_URL}${item.file_path}`}
-                  className=""
                 />
               ))}
             </div>

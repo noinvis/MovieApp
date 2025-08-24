@@ -14,17 +14,17 @@ const Bookmark = () => {
 
   if (bookmark.length === 0) {
     return (
-      <div className="bg-black">
+      <div className="">
         <div className="container h-[70vh] flex justify-center items-center flex-col gap-[10px]">
-          <GoBookmarkSlash className="text-[80px] text-white" />
-          <p className="text-[50px] text-white text-center font-medium max-[500px]:text-[30px]">
+          <GoBookmarkSlash className="text-[80px] " />
+          <p className="text-[50px]  text-center font-medium max-[500px]:text-[30px]">
             Bookmark is empty!
           </p>
-          <p className="text-[24px] text-white text-center font-medium max-[500px]:text-[18px]">
+          <p className="text-[24px]  text-center font-medium max-[500px]:text-[18px]">
             Please choose your liked movie
           </p>
           <button
-            className="text-white bg-[#C61F1F] py-[10px] px-[30px] rounded-[12px] mt-[10px]"
+            className=" bg-[#C61F1F] dark:text-white py-[10px] px-[30px] rounded-[12px] mt-[10px]"
             onClick={() => navigate("/")}
           >
             Home
@@ -35,8 +35,8 @@ const Bookmark = () => {
   }
 
   return (
-    <div className="bg-black">
-      <p className="text-center text-white text-[40px] font-semibold max-[700px]:text-[24px]">Bookmark</p>
+    <div className="">
+      <p className="text-center text-[40px] font-semibold max-[700px]:text-[24px]">Bookmark</p>
       <MovieView data={bookmark} />
     </div>
   );

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 .container{
     max-width: 1340px;
     width: 100%;
@@ -13,7 +15,6 @@ button:hover{
 }
 .link.active{
     border-bottom: 1px solid white;
-    
 }
 li:hover{
     cursor: pointer;

@@ -11,8 +11,8 @@ const Similar = () => {
   const movies = similar?.results?.slice(0, 8) || [];
 
   return (
-    <div className="bg-black py-[30px]">
-      <p className="text-center text-white text-[40px] font-semibold mb-[30px] max-[700px]:text-[24px]">
+    <div className="py-[30px]">
+      <p className="text-center text-[40px] font-semibold mb-[30px] max-[700px]:text-[24px]">
         Similar movies
       </p>
       {isLoading ? (

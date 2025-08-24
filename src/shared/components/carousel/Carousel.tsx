@@ -25,7 +25,7 @@ const Carousel = () => {
 
   if (isLoading)
     return (
-      <div className="h-[80vh] flex justify-center items-center bg-black">
+      <div className="h-[80vh] flex justify-center items-center bg-black dark:bg-white">
         <div className="loader"></div>
       </div>
     );
@@ -35,7 +35,7 @@ const Carousel = () => {
     .slice(0, 16);
 
   return (
-    <div className="bg-black">
+    <div className="">
       <div className="container pb-[20px]">
         <Swiper
           spaceBetween={12}
@@ -74,7 +74,7 @@ const Carousel = () => {
                   <div className="flex justify-center">
                     <button
                       onClick={() => navigate(`/movie/${movie.id}`)}
-                      className="mt-3 hover:bg-gray-300 flex items-center justify-center py-[1rem] rounded-[10px] font-semibold px-[100px] max-[400px]:px-[60px] gap-[10px] text-center bg-white duration-300 text-[#C61F1F]"
+                      className="mt-3 hover:bg-gray-300 flex items-center justify-center py-[1rem] rounded-[10px] font-semibold px-[100px] max-[400px]:px-[60px] gap-[10px] text-center bg-white dark:bg-[#C61F1F] dark:text-white duration-300 text-[#C61F1F]"
                     >
                       <Play />
                       Смотреть

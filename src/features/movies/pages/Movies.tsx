@@ -53,8 +53,8 @@ const Movies = () => {
   };
 
   return (
-    <div className="bg-black">
-      <p className="text-center text-white text-[40px] font-semibold pt-[20px] max-[700px]:text-[24px]">
+    <div className="">
+      <p className="text-center text-[40px] font-semibold pt-[20px] max-[700px]:text-[24px]">
         Movies
       </p>
       <div className="container flex justify-between items-center pt-[30px]">
@@ -69,7 +69,6 @@ const Movies = () => {
             flex
             justify-between
             items-center
-            shadow-md
             transition-all
             max-[450px]:w-[140px]
             [&_.ant-select-selector]:!py-[24px]
@@ -94,7 +93,6 @@ const Movies = () => {
             flex
             justify-center
             items-center
-            shadow-md
             transition-all
             max-[450px]:w-[140px]
             [&_.ant-select-selector]:!py-[24px]
@@ -112,7 +110,7 @@ const Movies = () => {
       </div>
       <div className="min-h-[500px] max-[410px]:min-h-[200px]">
         {isLoading && (
-          <div className="h-[80vh] flex justify-center items-center bg-black">
+          <div className="h-[80vh] flex justify-center items-center">
             <div className="loader"></div>
           </div>
         )}
@@ -127,14 +125,14 @@ const Movies = () => {
         )}
       </div>
 
-      <div className="flex justify-center bg-black py-[30px]">
+      <div className="flex justify-center py-[30px]">
         <Pagination
           current={Number(page)}
           onChange={handleChange}
           showSizeChanger={false}
           defaultPageSize={1}
           total={data?.total_pages || 0}
-          className="bg-white border h-[50px] flex justify-between items-center rounded-[12px] text-white shadow-white max-[400px]:w-[330px]"
+          className="bg-white border dark:border-[#999] h-[50px] flex justify-between items-center rounded-[12px] text-white shadow-white max-[400px]:w-[330px]"
         />
       </div>
     </div>

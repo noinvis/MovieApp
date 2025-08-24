@@ -3,9 +3,11 @@ import AppRoutes from "./routes"
 
 const App = () => {
   return (
-    <AppProvider>
-      <AppRoutes/>
-    </AppProvider>
+    <div className="bg-black text-white dark:bg-white dark:text-black">
+      <AppProvider>
+        <AppRoutes/>
+      </AppProvider>
+    </div>
   )
 }
 

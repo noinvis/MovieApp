@@ -13,9 +13,9 @@ const Home = () => {
     }, []);
   
   return (
-    <div className="bg-black">
+    <div>
       <Carousel/>
-      <p className="text-center text-white text-[40px] font-semibold max-[700px]:text-[24px]">
+      <p className="text-center text-[40px] font-semibold max-[700px]:text-[24px]">
         Movies
       </p>
       <MovieView data={data?.results}/>
