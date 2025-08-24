@@ -6,6 +6,7 @@ import { IMAGE_URL } from "../../../shared/const";
 import Similar from "./similar/Similar";
 import MovieVideo from "../components/movie-video/MovieVideo";
 import detailImage from "../../../shared/assets/card.png";
+import { Image } from "antd";
 
 interface Props {
   title: string;
@@ -153,14 +154,14 @@ const MovieDetail: FC<Props> = ({ title, title2 }) => {
         <div className="flex overflow-auto mb-[30px] scrollbar-hide">
           {images?.backdrops?.length ? (
             <div className="flex overflow-auto mb-[30px] scrollbar-hide">
-              {images.backdrops.slice(0, 10).map((item: Image, inx: number) => (
-                <img
+              {images.backdrops.slice(0, 7).map((item: Image, inx: number) => (
+                <Image
+                  width='100%'
+                  height="150px"
                   loading="lazy"
                   key={inx}
                   src={`${IMAGE_URL}${item.file_path}`}
-                  width={250}
-                  className="max-[450px]:w-[150px]"
-                  alt=""
+                  className=""
                 />
               ))}
             </div>

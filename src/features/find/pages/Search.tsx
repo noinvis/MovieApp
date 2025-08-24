@@ -1,5 +1,5 @@
 import { Input } from "antd";
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useSearch } from "../service/useSearch";
 import MovieView from "../../movies/components/movie-view/MovieView";
 import useDebounce from "../../../shared/hooks/useDebounce";
@@ -10,6 +10,10 @@ const Search = () => {
 
   const { getMovieBySearch } = useSearch();
   const { data, isLoading } = getMovieBySearch({ query: debouncedValue });
+
+  useLayoutEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
   return (
     <div className="container">
