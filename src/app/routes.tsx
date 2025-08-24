@@ -2,6 +2,7 @@ import React, { lazy } from "react";
 import { useRoutes } from "react-router-dom";
 
 const MainLayout = lazy(() => import("../layout/MainLayout"));
+const GoogleAuth = lazy(() => import("../features/google-auth/pages/GoogleAuth"));
 const Home = lazy(() => import("../features/home/pages/Home"));
 const Bookmark = lazy(() => import("../features/bookmark/pages/Bookmark"));
 const Search = lazy(() => import("../features/find/pages/Search"));
@@ -32,6 +33,10 @@ const AppRoutes = () => {
         { path: "*", element: <NotFound /> },
       ],
     },
+    {
+      path: "/googleAuth",
+      element: <GoogleAuth/>
+    }
   ]);
 };
 

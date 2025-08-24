@@ -1,11 +1,39 @@
-import { memo } from "react";
+import { memo, useEffect, useState } from "react";
 import img from "../../../src/shared/assets/logo.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import find from "../../../src/shared/assets/search-line.png";
 import { Clapperboard, House, Search } from "lucide-react";
 import { Bookmark } from "lucide-react";
+import { jwtDecode } from "jwt-decode";
+
+interface GoogleUser {
+  name: string;
+  email: string;
+  picture: string;
+}
 
 const Header = () => {
+  const [user, setUser] = useState<GoogleUser | null>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("google-token");
+    if (token) {
+      try {
+        const decoded: GoogleUser = jwtDecode(token);
+        setUser(decoded);
+      } catch (e) {
+        console.error("Invalid token", e);
+      }
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("google-token");
+    setUser(null);
+    navigate("/");
+  };
+
+  const navigate = useNavigate()
   return (
     <header className="w-full sticky top-0 z-20 h-[80px] bg-black">
       <nav className="container flex justify-between items-center h-full">
@@ -110,10 +138,33 @@ const Header = () => {
             <Search />
           </NavLink>
         </div>
-        <div className="">
-          <button className="py-[18px] px-[65px] rounded-[12px] bg-[#C61F1F] text-white font-medium max-[520px]:px-[45px] max-[520px]:py-[8px]">
-            Войти
-          </button>
+        <div>
+          {user ? (
+            <div className="flex items-center gap-3">
+              <div className="flex flex-col items-end">
+                <p>{user.name}</p>
+                <p className="text-[12px] text-[#999]">{user.email}</p>
+              </div>
+              <img
+                src={user.picture}
+                alt={user.name}
+                className="w-10 h-10 rounded-full"
+              />
+              <button
+                onClick={handleLogout}
+                className="py-2 px-4 rounded-[12px] bg-[#C61F1F] font-medium"
+              >
+                Выйти
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => navigate("/googleAuth")}
+              className="py-2 px-4 rounded-[12px] bg-[#C61F1F] font-medium"
+            >
+              Войти
+            </button>
+          )}
         </div>
       </nav>
     </header>
